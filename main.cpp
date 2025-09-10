@@ -71,8 +71,21 @@ int main() {
     int enemyHealth = 50;
     int enemyDamage = 5;
 
-    cout << "Enter your name: ";
-    cin >> inputName;
+    ifstream in("save.txt");
+    if(!in) {
+            cout << "No save file found!" << endl;
+            cout << "Enter your name: ";
+            cin >> inputName;
+    }
+    else {
+        getline(in, inputName);
+        in >> playerHealth;
+        in >> playerDamage;
+        in >> playerCoin;
+        in.close();
+        cout << "Game loaded" << endl;
+    }
+
     system("cls");
 
     cout << "Welcome, " << inputName << "!" << endl;
@@ -89,6 +102,7 @@ int main() {
         cout << "2. Enter the shop!" << endl;
         cout << "3. Save Game!" << endl;
         cout << "4. Load Game!" << endl;
+        cout << "5. Exit Game!" << endl;
         cout << " " << endl;
         cout << "Choose your option: ";
         cin >> choice;
@@ -105,7 +119,9 @@ int main() {
             shop(playerHealth, playerDamage, playerCoin);
         }
         else if (choice == 3) {
+            system("cls");
             ofstream out("save.txt");
+            out << inputName << "\n";
             out << playerHealth << "\n";
             out << playerDamage << "\n";
             out << playerCoin << "\n";
@@ -113,10 +129,15 @@ int main() {
             cout << "Game saved" << endl;
         }
         else if (choice == 4) {
+            system("cls");
             ifstream in("save.txt");
-            in >> playerHealth >> playerDamage >> playerCoin;
+            in >> inputName >> playerHealth >> playerDamage >> playerCoin;
             in.close();
             cout << "Game loaded" << endl;
+        }
+        else if (choice == 5) {
+            system("cls");
+            cout << "Goodbye!" << endl;
         }
     }
 
