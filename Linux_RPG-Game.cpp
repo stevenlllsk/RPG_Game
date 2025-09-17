@@ -4,9 +4,10 @@
 
 using namespace std;
 
-void fight(int& playerHealth, int playerDamage, int& enemyHealth, int enemyDamage, int& playerCoin, int damageTaken, int playerArmor) {
+void fight(int& playerHealth, int playerDamage, int& enemyHealth, int enemyDamage, int& playerCoin, int playerArmor) {
+    int damageTaken;
+    
     while (enemyHealth > 0 && playerHealth > 0) {
-        cin.get();
          
         enemyHealth -= playerDamage;
         damageTaken = enemyDamage - playerArmor;
@@ -36,21 +37,22 @@ void fight(int& playerHealth, int playerDamage, int& enemyHealth, int enemyDamag
     }
 }
 
-void shop(int& playerHealth, int& playerDamage, int& playerCoin) {
+void shop(int& playerHealth, int& playerDamage, int& playerCoin, int& playerArmor) {
     int choice;
 
     cout << "Welcome to my shop!" << endl;
 
     cout << "You have " << playerCoin << " coins!" << endl;
 
-    cout << "1. Buy damage +1 ." << endl;
-    cout << "2. Buy health potion, +20 hp! ." << endl;
+    cout << "1. Buy damage +1: Costs 5 coins!" << endl;
+    cout << "2. Buy health potion +25: Costs 15 coins!" << endl;
+    cout << "3. Buy Armor +1 AP: Costs 30 coins!" << endl;
     cout << "Enter your choice: " << endl;
     cin >> choice;
 
     if (choice == 1) {
         system("clear");
-        cout << "Bought 1 damage!" << endl;
+        cout << "Bought damage +1: Costs 5 coins!" << endl;
         playerDamage += 1;
         playerCoin -= 5;
         cout << "Player damage: " << playerDamage << endl;
@@ -59,13 +61,21 @@ void shop(int& playerHealth, int& playerDamage, int& playerCoin) {
     }
     else if (choice == 2) {
         system("clear");
-        cout << "Bought 1 health potion, +20 hp!" << endl;
+        cout << "Bought health potion +25: Costs 15 coins!!" << endl;
         playerHealth += 25;
-        playerCoin -= 10;
+        playerCoin -= 15;
         cout << "Player health: " << playerHealth << endl;
         cout << " " << endl;
         cout << "Coins remaining: " << playerCoin << endl;
-    }
+    } else if (choice == 3) {
+		system("clear");
+		cout << "Bought Armor +1 AP: Costs 30 coins!" << endl;
+		playerArmor += 1;
+		playerCoin -= 30;
+		cout << "Armor Points: " << playerArmor << endl;
+		cout << " " << endl;
+		cout << "Coins remaining: " << playerCoin << endl;
+	}
 }
 
 int main() {
@@ -76,8 +86,6 @@ int main() {
     int playerDamage = 7;
     int playerCoin = 0;
     int playerArmor = 2;
-    
-    int damageTaken;
 
     int enemyHealth = 50;
     int enemyDamage = 5;
@@ -93,6 +101,7 @@ int main() {
         in >> playerHealth;
         in >> playerDamage;
         in >> playerCoin;
+        in >> playerArmor;
         in.close();
         cout << "Game loaded" << endl;
     }
@@ -105,7 +114,7 @@ int main() {
     int choice;
 
     while (playerHealth > 0) {
-        cout << "You can do " << playerDamage << " damage!\nYou have " << playerHealth << " health!" << endl << endl;
+        cout << "You can do " << playerDamage << " damage!\nYou have " << playerHealth << " health!\n" << "You have " << playerArmor << endl << endl;
 
         cout << "You have " << playerCoin << " coins!" << endl << endl;
 
@@ -122,12 +131,12 @@ int main() {
             cout << "Fight another enemy!" << endl;
             system("clear");
             enemyHealth = 50;
-            fight(playerHealth, playerDamage, enemyHealth, enemyDamage, playerCoin, damageTaken, playerArmor);
+            fight(playerHealth, playerDamage, enemyHealth, enemyDamage, playerCoin, playerArmor);
         }
         else if (choice == 2) {
             cout << "Welcome to my shop!" << endl;
             system("clear");
-            shop(playerHealth, playerDamage, playerCoin);
+            shop(playerHealth, playerDamage, playerCoin, playerArmor);
         }
         else if (choice == 3) {
             system("clear");
@@ -136,19 +145,21 @@ int main() {
             out << playerHealth << "\n";
             out << playerDamage << "\n";
             out << playerCoin << "\n";
+            out << playerArmor << "\n";
             out.close();
             cout << "Game saved" << endl;
         }
         else if (choice == 4) {
             system("clear");
             ifstream in("save.txt");
-            in >> inputName >> playerHealth >> playerDamage >> playerCoin;
+            in >> inputName >> playerHealth >> playerDamage >> playerCoin >> playerArmor;
             in.close();
             cout << "Game loaded" << endl;
         }
         else if (choice == 5) {
             system("clear");
             cout << "Goodbye!" << endl;
+            break;
         }
     }
 
