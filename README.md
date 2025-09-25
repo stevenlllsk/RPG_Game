@@ -1,12 +1,12 @@
-So i have been learning C++ for a bit, and I've seen that I've got enough to actually start developing a little command line RPG Game so here it is.
+I’ve been learning C++ and now I’m building a small command-line RPG.
+This is my first real project: Runecrawl.
 
+Current Goals
 
+Add upgrades in the shop: swords, shields, and armor with basic stats.
 
+Make a simple inventory so enemies can drop potions, armor, and weapons.
 
+Add more enemy types (might need some code changes).
 
-
-
-
-PLANS:
-The next update that i am planning is specific upgrades and possibly a crude inventory system. To dive deeper is, you in the shop, will be able to buy swords or a shield and armor.
-Which will have stats too(which i will maybe have to improve). The inventory system, which as said, will be crude, will have enemies(More types will be made, may have to have a big recode) drop potions and drop some armor and swords, shields.
+More updates coming as I keep learning and improving the game!
