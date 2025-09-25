@@ -9,4 +9,4 @@ So i have been learning C++ for a bit, and I've seen that I've got enough to act
 
 PLANS:
 The next update that i am planning is specific upgrades and possibly a crude inventory system. To dive deeper is, you in the shop, will be able to buy swords or a shield and armor.
-Which will have stats too(which i will maybe have to improve).
+Which will have stats too(which i will maybe have to improve). The inventory system, which as said, will be crude, will have enemies(More types will be made, may have to have a big recode) drop potions and drop some armor and swords, shields.
