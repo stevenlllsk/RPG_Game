@@ -1,0 +1,15 @@
+So to be fair I dont know where to start!
+
+So I think the first thing im gonna get down is a fighting loop, but I would have to make
+the code for the inventory. Then I can move on to file saving.
+
+So first, I need to get the inventory down then learn and get it into main.cpp, shouldnt be
+tooooo hard.
+
+
+
+11/5/25
+
+Well, i got the inventory down, and files for enemies, so thats good, and also this has a fighting loop too so if you wanna play it its gonna be pretty boring, but thats fine.
+
+Next is most likely refining the UI then moving to the shop (may do seperate files for the shop)
