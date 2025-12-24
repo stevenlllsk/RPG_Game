@@ -57,7 +57,7 @@ int main() {
 
 		while (playerHealth > 0) {
 			int choice;
-			cout << "       RUNECRAWL              v0.0.1" << endl;
+			cout << "       RUNECRAWL              v Alpha 0.0.1" << endl;
 			cout << " " << endl;
 			cout << "Player Name: " << playerName << endl;
 			cout << " " << endl;
