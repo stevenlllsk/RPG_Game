@@ -8,19 +8,24 @@ using namespace std;
 
 // ====== FIGHT LOOP ======
 void fightLoop(int& playerHealth, int& playerCoins, Inventory playerWeapon, Enemies& e, string playerName) {
-    while (e.health >= 0 && playerHealth >= 0) {
+    while (e.health >= 0 && playerHealth >= 1) {
         cin.get();
         e.health -= playerWeapon.damage;
 
-        int damageTaken = e.damage;
-        if (damageTaken < 0) damageTaken = 0;
+        e.health -= playerWeapon.damage;
+
+		int damageTaken = 0;
+		if (e.health > 0) {
+    		damageTaken = e.damage;
+    		if (damageTaken < 0) damageTaken = 0;
+		}
 
         playerHealth -= damageTaken;
 
         system("cls");
-        cout << "You hit the enemy! Enemy HP: " << e.health << endl;
-        cout << "Enemy did " << damageTaken << " damage!" << endl;
-        cout << "You did " << playerWeapon.damage << " damage!" << endl;
+        cout << playerName << " hit the " << e.name << "! " << e.name << " HP: " << e.health << endl;
+        cout << e.name << " did " << damageTaken << " damage!" << endl;
+        cout << playerName << " did " << playerWeapon.damage << " damage!" << endl;
         cout << "Your health is " << playerHealth << "!" << endl;
     }
 
@@ -28,19 +33,19 @@ void fightLoop(int& playerHealth, int& playerCoins, Inventory playerWeapon, Enem
         system("cls");
         cout << "You're dead!" << endl;
     } else {
-        cout << "You defeated the enemy!" << endl;
+        cout << "You defeated the " << e.name << "!" << endl;
 	playerCoins += 20;
     }
 	system("cls");
 }
 
 // ====== SHOP ======
-void shop(int& playerCoins, Potion& p) {
-	weaponStore w = buy_weapon("Rusty Iron Sword", 9, 45);
+void shop(int& playerCoins, Inventory& playerWeapon, Potion& p, weaponStore& ws) {
 
 	int choice;
 	cout << "1) Buy Health Potion (" << p.cost << " coins)" << endl;
-	cout << "2) Leave" << endl;
+	cout << "2) Buy " << ws.name << " (" << ws.cost << " coins)" << endl;
+	cout << "3) Leave" << endl;
 	cout << "Enter your choice: ";
 	cin >> choice;
 
@@ -52,8 +57,32 @@ void shop(int& playerCoins, Potion& p) {
 		} else {
 			cout << "Not enough coins!" << endl;
 		}
-	} else {
-		cout << "Goodbye!" << endl;
+	}
+
+	if(choice == 2){
+		if(playerCoins >= ws.cost){
+			if(!ws.owned){
+				playerCoins -= ws.cost;
+				ws.owned = true;
+				cout << "You bought the " << ws.name << "!" << endl;
+				playerWeapon.equipped = false;
+				if(ws.owned == true){
+					playerWeapon.name = ws.name;
+					playerWeapon.damage = ws.damageAmount;
+					playerWeapon.equipped = true;
+				}
+			}
+			else{
+				cout << "You already own the " << ws.name << "!" << endl;
+			}
+		}
+		else{
+			cout << "Not enough coins to buy the " << ws.name << "!" << endl;
+		}
+	}
+
+	if (choice == 3){
+		cout << "Leaving shop..." << endl;
 	}
 
 	cin.get();
@@ -92,9 +121,10 @@ void playerInventory(int& playerHealth, Potion& p){
 
 // ====== MAIN LOOP ======
 int main() {
-	Inventory w = create_weapon("Wooden Sword", 5);
+	Inventory w = create_weapon("Wooden Sword", 5, true);
 	Enemies e = create_enemies("Orc", 3, 25);
 	Potion p = create_potion("Health Potion", 15, 10, 0);
+	weaponStore ws = buy_weapon("Rusty Iron Sword", 9, 45, false);
 
 	string playerName;
 	int playerHealth = 100;
@@ -108,7 +138,7 @@ int main() {
 
 	while (playerHealth > 0) {
 		int choice;
-		cout << "             ====  RUNECRAWL  ====         v0.0.4 Alpha" << endl;
+		cout << "             ======  RUNECRAWL  ======           v0.0.6 Alpha" << endl;
 		cout << " " << endl;
 		cout << " " << endl;
 		cout << "Player Name: " << playerName << endl;
@@ -121,7 +151,7 @@ int main() {
 		cout << " " << endl;
 		cout << " " << endl;
 		cout << "1) Go fight" << endl;
-		cout << "2) Shop(Not Finished!)" << endl;
+		cout << "2) Shop" << endl;
 		cout << "3) Open Inventory" << endl;
 		cout << "4) Exit RUNECRAWL" << endl;
 		cout << " " << endl;
@@ -134,7 +164,7 @@ int main() {
 			fightLoop(playerHealth, playerCoins, playerWeapon, orcFight, playerName);
 		} 
 		else if (choice == 2) {
-			shop(playerCoins, p);
+			shop(playerCoins, playerWeapon, p, ws);
 		}
 		else if (choice == 3){
 			playerInventory(playerHealth, p);
