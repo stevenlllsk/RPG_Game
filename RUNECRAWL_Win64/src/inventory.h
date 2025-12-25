@@ -10,10 +10,11 @@
 struct Inventory{
 	std::string name;
 	int damage;
+	bool equipped;
 };
 
 // makes the function for creating the weapon, then pushed over to inventory.cpp to be 
 // further made and then main.cpp
-Inventory create_weapon(std::string name, int damage);
+Inventory create_weapon(std::string name, int damage, bool equipped);
 
 #endif
