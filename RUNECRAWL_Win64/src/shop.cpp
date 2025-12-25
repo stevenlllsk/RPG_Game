@@ -5,20 +5,19 @@
 using namespace std;
 
 Potion create_potion(string name, int healAmount, int cost, int amount) {
-        Potion p;
-        p.name = "Health Potion";
-	p.healAmount = 15;
-	p.cost = 10;
-        p.amount = 0;
-
-        return p;
+    Potion p;
+    p.name = name;
+    p.healAmount = healAmount;
+    p.cost = cost;
+    p.amount = amount;
+    return p;
 }
 
-weaponStore buy_weapon(string name, int damageAmount , int cost){
-        weaponStore w;
-        w.name = "Rusty Iron Sword";
-        w.damageAmount = 9;
-        w.cost = 45;
-
-        return w;
+weaponStore buy_weapon(string name, int damageAmount , int cost, bool owned) {
+    weaponStore ws;
+    ws.name = name;
+    ws.damageAmount = damageAmount;
+    ws.cost = cost;
+    ws.owned = owned;
+    return ws;
 }
