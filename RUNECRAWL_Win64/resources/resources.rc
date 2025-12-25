@@ -1,1 +1,32 @@
 IDI_ICON1 ICON "runecrawl_icon.ico"
+
+#include <windows.h>
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION     0,0,0,4
+ PRODUCTVERSION  0,0,0,4
+ FILEFLAGSMASK   VS_FFI_FILEFLAGSMASK
+ FILEFLAGS       0
+ FILEOS          VOS_NT_WINDOWS32
+ FILETYPE        VFT_APP
+ FILESUBTYPE     0
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904B0"   // U.S. English, Unicode
+    BEGIN
+      VALUE "CompanyName",      "LagrothYT\0"
+      VALUE "FileDescription",  "RuneCrawl\0"
+      VALUE "FileVersion",      "a0.0.0.4\0"
+      VALUE "InternalName",     "runecrawl\0"
+      VALUE "OriginalFilename", "runecrawl.exe\0"
+      VALUE "ProductName",      "RuneCrawl\0"
+      VALUE "ProductVersion",   "a0.0.0.4\0"
+    END
+  END
+
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0409, 1200
+  END
+END
