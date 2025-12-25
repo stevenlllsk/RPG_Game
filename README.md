@@ -1,4 +1,4 @@
-RUNECRAWL (v0.0.5 Alpha)
+RUNECRAWL (v0.0.0.6 Alpha)
 =======================
 
 A small C++ console dungeon-crawler project. It’s early, it’s messy, and it’s fun.
