@@ -108,7 +108,7 @@ int main() {
 
 	while (playerHealth > 0) {
 		int choice;
-		cout << "             ====  RUNECRAWL  ====         v0.0.2 Alpha" << endl;
+		cout << "             ====  RUNECRAWL  ====         v0.0.4 Alpha" << endl;
 		cout << " " << endl;
 		cout << " " << endl;
 		cout << "Player Name: " << playerName << endl;
