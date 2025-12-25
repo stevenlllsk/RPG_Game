@@ -1,1 +1,6 @@
-Currently going to do a recode of this game, since this was just put together to test myself on how well i can code, really no direction. I havent touched this in 2 weeks, so, i may have a version out in a few hours or tommarow.     Anyways peeps, have a great day!!
+So here it goes, the recode of this game!
+
+Currently the game has:
+- A shop system
+- Fighting system
+- And a simple inventory, for now, its for health potions
